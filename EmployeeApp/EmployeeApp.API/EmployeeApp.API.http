@@ -1,0 +1,6 @@
+@EmployeeApp.API_HostAddress = http://localhost:5240
+
+GET {{EmployeeApp.API_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

@@ -1,0 +1,17 @@
+/Users/mehemmedxelilzade/RiderProjects/EmployeeApp/EmployeeApp.DAL/bin/Debug/net8.0/EmployeeApp.DAL.deps.json
+/Users/mehemmedxelilzade/RiderProjects/EmployeeApp/EmployeeApp.DAL/bin/Debug/net8.0/EmployeeApp.DAL.runtimeconfig.json
+/Users/mehemmedxelilzade/RiderProjects/EmployeeApp/EmployeeApp.DAL/bin/Debug/net8.0/EmployeeApp.DAL.dll
+/Users/mehemmedxelilzade/RiderProjects/EmployeeApp/EmployeeApp.DAL/bin/Debug/net8.0/EmployeeApp.DAL.pdb
+/Users/mehemmedxelilzade/RiderProjects/EmployeeApp/EmployeeApp.DAL/bin/Debug/net8.0/EmployeeApp.Core.dll
+/Users/mehemmedxelilzade/RiderProjects/EmployeeApp/EmployeeApp.DAL/bin/Debug/net8.0/EmployeeApp.Core.pdb
+/Users/mehemmedxelilzade/RiderProjects/EmployeeApp/EmployeeApp.DAL/obj/Debug/net8.0/EmployeeApp.DAL.csproj.AssemblyReference.cache
+/Users/mehemmedxelilzade/RiderProjects/EmployeeApp/EmployeeApp.DAL/obj/Debug/net8.0/EmployeeApp.DAL.GeneratedMSBuildEditorConfig.editorconfig
+/Users/mehemmedxelilzade/RiderProjects/EmployeeApp/EmployeeApp.DAL/obj/Debug/net8.0/EmployeeApp.DAL.AssemblyInfoInputs.cache
+/Users/mehemmedxelilzade/RiderProjects/EmployeeApp/EmployeeApp.DAL/obj/Debug/net8.0/EmployeeApp.DAL.AssemblyInfo.cs
+/Users/mehemmedxelilzade/RiderProjects/EmployeeApp/EmployeeApp.DAL/obj/Debug/net8.0/EmployeeApp.DAL.csproj.CoreCompileInputs.cache
+/Users/mehemmedxelilzade/RiderProjects/EmployeeApp/EmployeeApp.DAL/obj/Debug/net8.0/EmployeeApp.DAL.csproj.CopyComplete
+/Users/mehemmedxelilzade/RiderProjects/EmployeeApp/EmployeeApp.DAL/obj/Debug/net8.0/EmployeeApp.DAL.dll
+/Users/mehemmedxelilzade/RiderProjects/EmployeeApp/EmployeeApp.DAL/obj/Debug/net8.0/refint/EmployeeApp.DAL.dll
+/Users/mehemmedxelilzade/RiderProjects/EmployeeApp/EmployeeApp.DAL/obj/Debug/net8.0/EmployeeApp.DAL.pdb
+/Users/mehemmedxelilzade/RiderProjects/EmployeeApp/EmployeeApp.DAL/obj/Debug/net8.0/EmployeeApp.DAL.genruntimeconfig.cache
+/Users/mehemmedxelilzade/RiderProjects/EmployeeApp/EmployeeApp.DAL/obj/Debug/net8.0/ref/EmployeeApp.DAL.dll

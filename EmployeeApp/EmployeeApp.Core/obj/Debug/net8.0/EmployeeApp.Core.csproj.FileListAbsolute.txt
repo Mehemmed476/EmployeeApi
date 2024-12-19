@@ -1,0 +1,11 @@
+/Users/mehemmedxelilzade/RiderProjects/EmployeeApp/EmployeeApp.Core/bin/Debug/net8.0/EmployeeApp.Core.deps.json
+/Users/mehemmedxelilzade/RiderProjects/EmployeeApp/EmployeeApp.Core/bin/Debug/net8.0/EmployeeApp.Core.dll
+/Users/mehemmedxelilzade/RiderProjects/EmployeeApp/EmployeeApp.Core/bin/Debug/net8.0/EmployeeApp.Core.pdb
+/Users/mehemmedxelilzade/RiderProjects/EmployeeApp/EmployeeApp.Core/obj/Debug/net8.0/EmployeeApp.Core.GeneratedMSBuildEditorConfig.editorconfig
+/Users/mehemmedxelilzade/RiderProjects/EmployeeApp/EmployeeApp.Core/obj/Debug/net8.0/EmployeeApp.Core.AssemblyInfoInputs.cache
+/Users/mehemmedxelilzade/RiderProjects/EmployeeApp/EmployeeApp.Core/obj/Debug/net8.0/EmployeeApp.Core.AssemblyInfo.cs
+/Users/mehemmedxelilzade/RiderProjects/EmployeeApp/EmployeeApp.Core/obj/Debug/net8.0/EmployeeApp.Core.csproj.CoreCompileInputs.cache
+/Users/mehemmedxelilzade/RiderProjects/EmployeeApp/EmployeeApp.Core/obj/Debug/net8.0/EmployeeApp.Core.dll
+/Users/mehemmedxelilzade/RiderProjects/EmployeeApp/EmployeeApp.Core/obj/Debug/net8.0/refint/EmployeeApp.Core.dll
+/Users/mehemmedxelilzade/RiderProjects/EmployeeApp/EmployeeApp.Core/obj/Debug/net8.0/EmployeeApp.Core.pdb
+/Users/mehemmedxelilzade/RiderProjects/EmployeeApp/EmployeeApp.Core/obj/Debug/net8.0/ref/EmployeeApp.Core.dll
