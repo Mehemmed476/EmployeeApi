@@ -1,8 +1,29 @@
+using System.Reflection;
+using EmployeeApp.BL.Extensions;
 using EmployeeApp.BL.Services.Abstractions;
 using EmployeeApp.BL.Services.Implementations;
+using EmployeeApp.Core.Entities;
+using EmployeeApp.DAL.Contexts;
 using EmployeeApp.DAL.Extentions;
+using FluentValidation;
+using FluentValidation.AspNetCore;
+using Microsoft.AspNetCore.Identity;
 
 var builder = WebApplication.CreateBuilder(args);
+builder.Services.AddIdentity<AppUser, IdentityRole>(opt =>
+{
+    {
+        opt.Password.RequiredLength = 8;
+        opt.User.RequireUniqueEmail = true;
+        opt.User.AllowedUserNameCharacters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789._";
+        opt.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(10);
+        opt.Lockout.MaxFailedAccessAttempts = 4;
+    }
+}).AddDefaultTokenProviders().AddEntityFrameworkStores<AppDbContext>();
+
+builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
+builder.Services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
+builder.Services.AddFluentValidationAutoValidation().AddFluentValidationClientsideAdapters();
 
 builder.Services.AddControllers();
 // Add services to the container.
@@ -12,8 +33,6 @@ builder.Services.AddSwaggerGen();
 
 //Extension
 builder.Services.AddServices();
-builder.Services.AddScoped<IDepartmentService, DepartmentService>();
-builder.Services.AddScoped<IEmployeeService, EmployeeService>();
 
 var app = builder.Build();
 

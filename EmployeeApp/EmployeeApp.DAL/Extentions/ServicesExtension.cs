@@ -9,7 +9,7 @@ namespace EmployeeApp.DAL.Extentions;
 
 public static class ServicesExtension
 {
-    public static void AddServices(this IServiceCollection services)
+    public static void AddDALServices(this IServiceCollection services)
     {
         services.AddDbContext<AppDbContext>(
             opt =>

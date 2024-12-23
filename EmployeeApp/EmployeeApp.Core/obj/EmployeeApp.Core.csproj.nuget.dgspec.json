@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/Users/mehemmedxelilzade/RiderProjects/EmployeeApp/EmployeeApp.Core/EmployeeApp.Core.csproj": {}
+    "/Users/mehemmedxelilzade/Desktop/EmployeeApi/EmployeeApp/EmployeeApp.Core/EmployeeApp.Core.csproj": {}
   },
   "projects": {
-    "/Users/mehemmedxelilzade/RiderProjects/EmployeeApp/EmployeeApp.Core/EmployeeApp.Core.csproj": {
+    "/Users/mehemmedxelilzade/Desktop/EmployeeApi/EmployeeApp/EmployeeApp.Core/EmployeeApp.Core.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/mehemmedxelilzade/RiderProjects/EmployeeApp/EmployeeApp.Core/EmployeeApp.Core.csproj",
+        "projectUniqueName": "/Users/mehemmedxelilzade/Desktop/EmployeeApi/EmployeeApp/EmployeeApp.Core/EmployeeApp.Core.csproj",
         "projectName": "EmployeeApp.Core",
-        "projectPath": "/Users/mehemmedxelilzade/RiderProjects/EmployeeApp/EmployeeApp.Core/EmployeeApp.Core.csproj",
+        "projectPath": "/Users/mehemmedxelilzade/Desktop/EmployeeApi/EmployeeApp/EmployeeApp.Core/EmployeeApp.Core.csproj",
         "packagesPath": "/Users/mehemmedxelilzade/.nuget/packages/",
-        "outputPath": "/Users/mehemmedxelilzade/RiderProjects/EmployeeApp/EmployeeApp.Core/obj/",
+        "outputPath": "/Users/mehemmedxelilzade/Desktop/EmployeeApi/EmployeeApp/EmployeeApp.Core/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/Users/mehemmedxelilzade/.nuget/NuGet/NuGet.Config"
@@ -37,6 +37,12 @@
       "frameworks": {
         "net8.0": {
           "targetAlias": "net8.0",
+          "dependencies": {
+            "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[8.0.11, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",

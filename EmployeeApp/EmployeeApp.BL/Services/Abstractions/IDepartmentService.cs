@@ -5,9 +5,11 @@ namespace EmployeeApp.BL.Services.Abstractions;
 
 public interface IDepartmentService
 {
-    Task<ICollection<Department>> GetAllAsync();
-    Task<Department> GetByIdAsync(int id);
-    Task<Department> AddAsync(DepartmentCreateDto departmentCreateDto);
-    Task UpdateAsync(Department department);
-    void Delete(Department department);
+    Task<ICollection<DepartmentReadDto>> GetAllAsync();
+    Task<DepartmentReadDto> GetByIdAsync(int id);
+    Task<DepartmentReadDto> AddAsync(DepartmentCreateDto departmentCreateDto);
+    Task<bool> UpdateAsync(int id, DepartmentUpdateDto departmentUpdateDto);
+    Task<bool> SoftDeleteAsync(int id);
+    Task<bool> RestoreAsync(int id);
+    Task<bool> DeleteAsync(int id);
 }

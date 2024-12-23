@@ -13,7 +13,7 @@ public class Repository<TEntity> : IRepository<TEntity> where TEntity : BaseEnti
     {
         _context = context;
     }
-    
+
     public DbSet<TEntity> Table => _context.Set<TEntity>();
 
     public async Task<ICollection<TEntity>> GetAllAsync()
@@ -46,5 +46,21 @@ public class Repository<TEntity> : IRepository<TEntity> where TEntity : BaseEnti
     public async Task SaveChangesAsync()
     {
         await _context.SaveChangesAsync();
+    }
+
+    public async Task<bool> IsExist(int id)
+    {
+        var isExist = await Table.AnyAsync(x => x.Id == id);
+        return isExist;
+    }
+
+    public void SoftDelete(TEntity entity)
+    {
+        entity.IsDeleted = true;
+    }
+
+    public void Restore(TEntity entity)
+    {
+        entity.IsDeleted = false;
     }
 }
