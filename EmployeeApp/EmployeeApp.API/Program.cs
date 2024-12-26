@@ -1,5 +1,7 @@
 using System.Reflection;
+using System.Text;
 using EmployeeApp.BL.Extensions;
+using EmployeeApp.BL.Profiles.AuthProfiles;
 using EmployeeApp.BL.Services.Abstractions;
 using EmployeeApp.BL.Services.Implementations;
 using EmployeeApp.Core.Entities;
@@ -7,7 +9,9 @@ using EmployeeApp.DAL.Contexts;
 using EmployeeApp.DAL.Extentions;
 using FluentValidation;
 using FluentValidation.AspNetCore;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.IdentityModel.Tokens;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddIdentity<AppUser, IdentityRole>(opt =>
@@ -21,13 +25,33 @@ builder.Services.AddIdentity<AppUser, IdentityRole>(opt =>
     }
 }).AddDefaultTokenProviders().AddEntityFrameworkStores<AppDbContext>();
 
-builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
+builder.Services.AddAutoMapper(typeof(AuthProfile));
 builder.Services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
 builder.Services.AddFluentValidationAutoValidation().AddFluentValidationClientsideAdapters();
 
 builder.Services.AddControllers();
-// Add services to the container.
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+
+builder.Services.AddAuthentication(cfg => {
+    cfg.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+    cfg.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+    cfg.DefaultScheme = JwtBearerDefaults.AuthenticationScheme; 
+}).AddJwtBearer(x => {
+
+    x.TokenValidationParameters = new TokenValidationParameters
+    {
+        
+        IssuerSigningKey = new SymmetricSecurityKey(
+            Encoding.UTF8
+                .GetBytes(builder.Configuration["Jwt:SecretKey"])
+        ),
+        ValidateIssuer = true,
+        ValidateAudience = true,
+        ValidateIssuerSigningKey = true,
+        ValidAudience = builder.Configuration["Jwt:Audience"],
+        ValidIssuer = builder.Configuration["Jwt:Issuer"]
+    };
+});
+
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
@@ -44,6 +68,7 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();

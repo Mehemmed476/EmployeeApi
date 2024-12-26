@@ -1,8 +1,10 @@
 // Updated AuthService
 using AutoMapper;
 using EmployeeApp.BL.DTOs.AppUserDTOs;
+using EmployeeApp.BL.ExternalServices.Abstractions;
 using EmployeeApp.BL.Services.Abstractions;
 using EmployeeApp.Core.Entities;
+using EmployeeApp.Core.Enums;
 using EmployeeApp.DAL.Exceptions;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -15,12 +17,15 @@ public class AuthService : IAuthService
     private readonly SignInManager<AppUser> _signInManager;
     private readonly IMapper _mapper;
     private readonly IEmailService _emailService;
-
-    public AuthService(UserManager<AppUser> userManager, SignInManager<AppUser> signInManager, IMapper mapper, IEmailService emailService)
+    private readonly IJwtTokenService _jwtTokenService;
+    private readonly RoleManager<IdentityRole> _roleManager;
+    public AuthService(UserManager<AppUser> userManager, SignInManager<AppUser> signInManager, IMapper mapper, IEmailService emailService, IJwtTokenService jwtTokenService, RoleManager<IdentityRole> roleManager)
     {
         _signInManager = signInManager;
         _mapper = mapper;
         _emailService = emailService;
+        _jwtTokenService = jwtTokenService;
+        _roleManager = roleManager;
         _userManager = userManager;
     }
 
@@ -29,6 +34,7 @@ public class AuthService : IAuthService
         var newUser = _mapper.Map<AppUser>(registerDto);
         
         var result = await _userManager.CreateAsync(newUser, registerDto.Password);
+        await _userManager.AddToRoleAsync(newUser, AppUserRoles.User.ToString());
         if (!result.Succeeded) return false;
 
         _emailService.SendWelcomeEmail(newUser.Email);
@@ -60,16 +66,18 @@ public class AuthService : IAuthService
         return true;
     }
 
-    public async Task<bool> LoginAsync(LoginDto loginDto)
+    public async Task<string> LoginAsync(LoginDto loginDto)
     {
         AppUser? searchedUser = await _userManager.FindByEmailAsync(loginDto.UserNameOrEmail) 
                                ?? await _userManager.FindByNameAsync(loginDto.UserNameOrEmail);
 
         if (searchedUser == null)
             throw new EntityNotFoundException("User not found");
-
-        var result = await _signInManager.PasswordSignInAsync(searchedUser, loginDto.Password, loginDto.RememberMe, true);
-        return result.Succeeded;
+        
+        bool result = await _userManager.CheckPasswordAsync(searchedUser, loginDto.Password);
+        if (!result) {throw new Exception("Username or password is wrong"); }
+        string token =  _jwtTokenService.GenerateJwtToken(searchedUser);
+        return token;
     }
 
     public async Task<bool> LogoutAsync()
@@ -108,12 +116,19 @@ public class AuthService : IAuthService
         return usersDto;
     }
 
-    public AppUserReadDto GetUserById(string userId)
+    public async Task<AppUserReadDto> GetUserByIdAsync(string userId)
     {
-        var user = _userManager.FindByIdAsync(userId);
+        var user = await _userManager.FindByIdAsync(userId);
         
         var userDto = _mapper.Map<AppUserReadDto>(user);
         
         return userDto;
+    }
+    
+    public async Task CreateRolesAsync()
+    {
+        await _roleManager.CreateAsync(new IdentityRole { Name = "Admin" });
+        await _roleManager.CreateAsync(new IdentityRole { Name = "Manager" });
+        await _roleManager.CreateAsync(new IdentityRole { Name = "User" });
     }
 }

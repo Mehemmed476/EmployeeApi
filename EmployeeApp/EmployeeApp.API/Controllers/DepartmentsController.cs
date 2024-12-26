@@ -1,6 +1,7 @@
 using EmployeeApp.BL.DTOs.DepartmentDTOs;
 using EmployeeApp.BL.Services.Abstractions;
 using EmployeeApp.Core.Entities;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -46,6 +47,7 @@ public class DepartmentsController : ControllerBase
     }
 
     [HttpPost("Create")]
+    [Authorize(Roles = "Admin")]
     public async Task<IActionResult> Create([FromBody] DepartmentCreateDto departmentCreateDto)
     {
         if (!ModelState.IsValid)

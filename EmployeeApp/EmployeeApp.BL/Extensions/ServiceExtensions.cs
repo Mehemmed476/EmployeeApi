@@ -1,3 +1,5 @@
+using EmployeeApp.BL.ExternalServices.Abstractions;
+using EmployeeApp.BL.ExternalServices.Implementations;
 using EmployeeApp.BL.Services.Abstractions;
 using EmployeeApp.BL.Services.Implementations;
 using EmployeeApp.DAL.Extentions;
@@ -18,6 +20,6 @@ public static class ServiceExtensions
         services.AddScoped<IEmailService, EmailService>();
         services.AddHttpContextAccessor();
         services.AddSingleton<IUrlHelperFactory, UrlHelperFactory>();
-        
+        services.AddScoped<IJwtTokenService, JwtTokenService>();
     }
 }

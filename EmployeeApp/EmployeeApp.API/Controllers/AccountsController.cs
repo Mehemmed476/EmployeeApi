@@ -36,25 +36,20 @@ namespace EmployeeApp.API.Controllers
         }
 
         [HttpPost("login")]
-        public async Task<IActionResult> Login([FromBody] LoginDto loginDto)
+        public async Task<IActionResult> Login(LoginDto loginDto)
         {
+            if (!ModelState.IsValid)
+            {
+                return StatusCode(StatusCodes.Status400BadRequest, ModelState);
+            }
             try
             {
-                var result = await _authService.LoginAsync(loginDto);
-                if (!result)
-                {
-                    return Unauthorized("Invalid credentials.");
-                }
+                return StatusCode(StatusCodes.Status200OK, await _authService.LoginAsync(loginDto));
+            }
+            catch (Exception e)
+            {
 
-                return Ok("Login successful.");
-            }
-            catch (EntityNotFoundException)
-            {
-                return NotFound("User not found.");
-            }
-            catch (Exception ex)
-            {
-                return BadRequest($"Error: {ex.Message}");
+                return StatusCode(StatusCodes.Status400BadRequest, e.Message);
             }
         }
 
@@ -64,6 +59,7 @@ namespace EmployeeApp.API.Controllers
             try
             {
                 await _authService.LogoutAsync();
+                
                 return Ok("Logout successful.");
             }
             catch (Exception ex)
@@ -138,7 +134,7 @@ namespace EmployeeApp.API.Controllers
         }
 
         [HttpGet("GetAllUsers")]
-        public IActionResult GetAllUsers()
+        public async Task<IActionResult> GetAllUsers()
         {
             try
             {
@@ -152,11 +148,11 @@ namespace EmployeeApp.API.Controllers
         }
 
         [HttpGet("GetUserById/{userId}")]
-        public IActionResult GetUserById(string userId)
+        public async Task<IActionResult> GetUserById(string userId)
         {
             try
             {
-                var user = _authService.GetUserById(userId);
+                var user = await _authService.GetUserByIdAsync(userId);
                 return Ok(user);
             }
             catch (EntityNotFoundException)

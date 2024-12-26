@@ -544,3 +544,4 @@
 /Users/mehemmedxelilzade/Desktop/EmployeeApi/EmployeeApp/EmployeeApp.API/bin/Debug/net8.0/Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
 /Users/mehemmedxelilzade/Desktop/EmployeeApi/EmployeeApp/EmployeeApp.API/bin/Debug/net8.0/Microsoft.Extensions.Identity.Core.dll
 /Users/mehemmedxelilzade/Desktop/EmployeeApi/EmployeeApp/EmployeeApp.API/bin/Debug/net8.0/Microsoft.Extensions.Identity.Stores.dll
+/Users/mehemmedxelilzade/Desktop/EmployeeApi/EmployeeApp/EmployeeApp.API/bin/Debug/net8.0/Microsoft.AspNetCore.Authentication.JwtBearer.dll
